@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function read_xy()
+{
+  [[ $x -gt $y ]] && printf 'X is greater than Y'
+  [[ $x -eq $y ]] && printf 'X is equal to Y'
+  [[ $x -lt $y ]] && printf 'X is less than Y'
+}
+
+read x ; read y ; read_xy
+exit 0
+
