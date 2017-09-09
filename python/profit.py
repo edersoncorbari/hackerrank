@@ -1,22 +1,25 @@
 #!/usr/bin/python -tt
 
-def compute_profit(values, prof):
-  buy = [1] * len(values)
-  prof, m = (0, 0)
+import sys
 
-  for i in reversed(range(len(values))):
-    ai = values[i]
-    if m <= ai:
-      buy[i] = 0
-      m = ai
-    prof += m-ai
-    
-  if prof:
-    return (prof)
-  return (prof, buy)
+def compute_profit(values):
+  for i in range(values):
+    N = int(input().strip())
+    prices = list(map(int, input().strip().split(' ')))
+    s, c = (0, 0)
+    tmax = prices[N-1]
+    if len(prices) <=1:
+      print(0)
+    else:
+      for j in range(N-1, -1, -1):
+        if tmax < prices[j]:
+          tmax = prices[j]
+        elif  prices[j] < tmax:
+          s += (tmax - prices[j])
+      print(s)
 
-if __name__ == "__main__":
-  print compute_profit([5, 3, 2, 2, 0], True)
-  print compute_profit([1,2,100], True)    
-  print compute_profit([1, 3, 1, 2], True)
+        
+if __name__ == "__main__":        
+  compute_profit(int(input().strip()))
+
 
